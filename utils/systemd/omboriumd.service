@@ -1,0 +1,21 @@
+[Unit]
+Description=Omborium Full Node
+After=network.target
+
+[Service]
+User=monero
+Group=monero
+WorkingDirectory=~
+RuntimeDirectory=omborium
+
+Type=forking
+PIDFile=/run/omborium/omboriumd.pid
+
+ExecStart=/usr/bin/omboriumd --config-file /etc/omboriumd.conf \
+    --detach --pidfile /run/omborium/omboriumd.pid
+
+Restart=always
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

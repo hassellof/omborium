@@ -4,9 +4,9 @@ function send_funds {
     local amount=$1
     local dest=$(cat "$2.address.txt")
 
-    monero-wallet-cli --wallet-file wallet_m --password "" \
-        --testnet --trusted-daemon --daemon-address localhost:38081  --log-file wallet_m.log \
-        --command transfer $dest $amount 
+    omborium-wallet-cli --wallet-file wallet_m --password "" \
+        --testnet --trusted-daemon --daemon-address localhost:88881  --log-file wallet_m.log \
+        --command transfer $dest $amount
 }
 
 
@@ -27,6 +27,3 @@ seed_wallets 10
 seed_wallets 20
 seed_wallets 50
 seed_wallets 100
-
-
-

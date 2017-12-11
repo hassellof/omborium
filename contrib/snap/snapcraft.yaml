@@ -1,31 +1,31 @@
-name: monero
+name: omborium
 version: 0.11.1.0-1
-summary: "Monero: the secure, private, untraceable cryptocurrency https://getmonero.org"
+summary: "Omborium: the secure, private, untraceable cryptocurrency https://ombori.org"
 description: |
-    Monero is a private, secure, untraceable, decentralised digital currency.
+    Omborium is a private, secure, untraceable, decentralised digital currency.
     You are your bank, you control your funds, and nobody can trace your transfers
     unless you allow them to do so.
 grade: devel
 confinement: strict
 
 apps:
-    monerod:
+    omboriumd:
         daemon: forking
         command: |
-          monerod-wrapper --detach --data-dir ${SNAP_COMMON} --config-file ${SNAP_USER_DATA}/etc/monerod.conf
+          omboriumd-wrapper --detach --data-dir ${SNAP_COMMON} --config-file ${SNAP_USER_DATA}/etc/omboriumd.conf
         plugs:
             - network
             - network-bind
-    monero-wallet-rpc:
+    omborium-wallet-rpc:
         command: |
-          monero-wallet-rpc --log-file ${SNAP_USER_DATA}
+          omborium-wallet-rpc --log-file ${SNAP_USER_DATA}
         plugs:
             - home
             - network
             - network-bind
-    monero-wallet-cli:
+    omborium-wallet-cli:
         command: |
-          monero-wallet-cli --log-file ${SNAP_USER_DATA}
+          omborium-wallet-cli --log-file ${SNAP_USER_DATA}
         plugs:
             - home
             - network
@@ -72,8 +72,8 @@ parts:
         plugin: dump
         source: .
         organize:
-            contrib/snap/monerod.conf: etc/monerod.conf
-            contrib/snap/monerod-wrapper: bin/monerod-wrapper
+            contrib/snap/omboriumd.conf: etc/omboriumd.conf
+            contrib/snap/omboriumd-wrapper: bin/omboriumd-wrapper
         prime:
             - etc
             - bin
